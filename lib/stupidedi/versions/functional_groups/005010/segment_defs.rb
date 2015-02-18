@@ -76,8 +76,14 @@ module Stupidedi
           autoload :DTP,
             "stupidedi/versions/functional_groups/005010/segment_defs/DTP"
 
-#          autoload :ENT,
-#            "stupidedi/versions/functional_groups/005010/segment_defs/ENT"
+          autoload :EB,
+            "stupidedi/versions/functional_groups/005010/segment_defs/EB"
+
+          autoload :EQ,
+            "stupidedi/versions/functional_groups/005010/segment_defs/EQ"
+
+          # autoload :ENT,
+          #   "stupidedi/versions/functional_groups/005010/segment_defs/ENT"
 
           autoload :FRM,
             "stupidedi/versions/functional_groups/005010/segment_defs/FRM"
@@ -87,6 +93,9 @@ module Stupidedi
 
           autoload :GS,
             "stupidedi/versions/functional_groups/005010/segment_defs/GS"
+
+          autoload :III,
+            "stupidedi/versions/functional_groups/005010/segment_defs/III"
 
           autoload :IK3,
             "stupidedi/versions/functional_groups/005010/segment_defs/IK3"
@@ -109,14 +118,23 @@ module Stupidedi
           autoload :HL,
             "stupidedi/versions/functional_groups/005010/segment_defs/HL"
 
+          autoload :HSD,
+            "stupidedi/versions/functional_groups/005010/segment_defs/HSD"
+
           autoload :K3,
             "stupidedi/versions/functional_groups/005010/segment_defs/K3"
 
           autoload :LIN,
             "stupidedi/versions/functional_groups/005010/segment_defs/LIN"
 
+          autoload :LE,
+            "stupidedi/versions/functional_groups/005010/segment_defs/LE"
+
           autoload :LQ,
             "stupidedi/versions/functional_groups/005010/segment_defs/LQ"
+
+          autoload :LS,
+            "stupidedi/versions/functional_groups/005010/segment_defs/LS"
 
           autoload :LX,
             "stupidedi/versions/functional_groups/005010/segment_defs/LX"
@@ -129,6 +147,12 @@ module Stupidedi
 
           autoload :MOA,
             "stupidedi/versions/functional_groups/005010/segment_defs/MOA"
+
+          autoload :MPI,
+            "stupidedi/versions/functional_groups/005010/segment_defs/MPI"
+
+          autoload :MSG,
+            "stupidedi/versions/functional_groups/005010/segment_defs/MSG"
 
           autoload :N1,
             "stupidedi/versions/functional_groups/005010/segment_defs/N1"

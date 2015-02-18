@@ -6,30 +6,46 @@ module Stupidedi
         @state = Empty.new(id)
       end
 
+      # Returns the current ID from whichever level is active
+      #
       def id
         @state.id
       end
 
+      # Create a new ISA12/IEA02 Interchange Control Number
+      #
+      # @return [Integer]
       def isa
         @state = @state.isa
         @state.id
       end
 
+      # Create a new GS06/GE02 Group Control Number
+      #
+      # @return [Integer]
       def gs
         @state = @state.gs
         @state.id
       end
 
+      # Create a new ST02/SE02 Transaction Set Control Number
+      #
+      # @return [String]
       def st
         @state = @state.st
         @state.id
       end
 
+      # Create a new HL01 Hierarchical ID Number
+      #
+      # @return [String]
       def hl
         @state = @state.hl
         @state.id
       end
 
+      # Return the ID of the current level, after removing that level
+      #
       def pop
         @state.id.tap { @state = @state.pop }
       end
@@ -46,11 +62,16 @@ module Stupidedi
           @count, @next, @id = 0, id, id
         end
 
+        # Create a new ISA12/IEA02 Interchange Control Number
+        #
+        # @return [ISA]
         def isa
           ISA.new(self, @next).tap { @count += 1; @next += 1 }
         end
 
-        # Number of Interchanges (ISA..IEA)
+        # Number of interchanges (not used)
+        #
+        # @return [Integer]
         def count
           @count
         end
@@ -63,15 +84,21 @@ module Stupidedi
           @count, @parent, @next, @id = 0, parent, id, id
         end
 
+        # Create a new GS06/GE02 Group Control Number
+        #
+        # @return [GS]
         def gs
           GS.new(self, @next).tap { @count += 1; @next += 1 }
         end
 
-        # Number of Functional Groups (GS..GE)
+        # IEA02 Number of Functional Groups (GS..GE)
+        #
+        # @return [Integer]
         def count
           @count
         end
 
+        # @return [Empty]
         def pop
           @parent
         end
@@ -84,6 +111,9 @@ module Stupidedi
           @count, @parent, @next, @id = 0, parent, id, id
         end
 
+        # Create a new ST02/SE02 Transaction Set Control Number
+        #
+        # @return [ST]
         def st
           ST.new(self, @next).tap { @count += 1; @next += 1 }
         end
@@ -95,6 +125,7 @@ module Stupidedi
           @count
         end
 
+        # @return [ISA]
         def pop
           @parent
         end
@@ -107,15 +138,23 @@ module Stupidedi
           @sequence, @parent, @id = 0, parent, id
         end
 
+        # Create a new HL01 Hierarchical ID Number
+        #
+        # @return [HL]
         def hl
           HL.new(self, @sequence += 1)
         end
 
+        # Current ST02 Transaction Set Control Number
+        #
+        # @return [String]
         def id
           @id.to_s.rjust(4, "0")
         end
 
-        # Number of segments (ST..SE)
+        # ST01 Number of Included Segments (within current ST..SE inclusive)
+        #
+        # @return [Integer]
         def count(builder)
           m = Either.success(builder.machine)
 
@@ -128,6 +167,7 @@ module Stupidedi
           end
         end
 
+        # @return [GS]
         def pop
           @parent
         end
@@ -140,15 +180,23 @@ module Stupidedi
           @parent, @id, @sequence = parent, id, id
         end
 
+        # Create a new HL01 Hierarchical ID Number
+        #
+        # @return [HL]
         def hl
           HL.new(self, @sequence += 1)
         end
 
+        # Current HL01 Hierarchical ID Number
+        #
+        # @return [String]
         def id
           @id.to_s
         end
 
-        # Parent HL number
+        # Current HL02 Parent Hierarchical ID Number
+        #
+        # @return [Integer]
         def parent
           case @parent
           when HL
