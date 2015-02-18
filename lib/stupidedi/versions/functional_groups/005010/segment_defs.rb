@@ -4,8 +4,8 @@ module Stupidedi
       module FiftyTen
         module SegmentDefs
 
-#          autoload :AAA,
-#            "stupidedi/versions/functional_groups/005010/segment_defs/AAA"
+         autoload :AAA,
+           "stupidedi/versions/functional_groups/005010/segment_defs/AAA"
 
           autoload :AK1,
             "stupidedi/versions/functional_groups/005010/segment_defs/AK1"
@@ -106,8 +106,8 @@ module Stupidedi
           autoload :IK5,
             "stupidedi/versions/functional_groups/005010/segment_defs/IK5"
 
-#          autoload :INS,
-#            "stupidedi/versions/functional_groups/005010/segment_defs/INS"
+         autoload :INS,
+           "stupidedi/versions/functional_groups/005010/segment_defs/INS"
 
           autoload :HCP,
             "stupidedi/versions/functional_groups/005010/segment_defs/HCP"
